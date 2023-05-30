@@ -1,9 +1,7 @@
 package com.alibou.security.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.alibou.security.user.User;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -12,7 +10,10 @@ public class Story {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private String imageUrl;
     private Long timestamp;
 
