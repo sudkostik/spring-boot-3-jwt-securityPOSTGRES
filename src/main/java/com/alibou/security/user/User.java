@@ -1,5 +1,6 @@
 package com.alibou.security.user;
 
+import com.alibou.security.entities.Story;
 import com.alibou.security.token.Token;
 import jakarta.persistence.*;
 
@@ -46,6 +47,8 @@ public class User implements UserDetails {
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
 
+  @OneToMany(mappedBy = "user")
+  private List<Story> stories;
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return role.getAuthorities();
